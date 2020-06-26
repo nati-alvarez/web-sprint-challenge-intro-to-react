@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import './App.css';
 
-const API = "https://pokeapi.co/api/v2/pokemon?limit=1000/";
+import Character from "./components/Character";
+
+const API = "https://pokeapi.co/api/v2/pokemon/";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -16,7 +18,7 @@ const App = () => {
     axios.get(API).then(({data})=>{
       data.results.forEach(item=>{
         axios.get(item.url).then(({data})=>{
-          setPokemon(pokemon.concat(data))
+          setPokemon(pokemon=> [...pokemon, data])
         }).catch(err=>{
           console.log(err);
         });
@@ -28,7 +30,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      {pokemon[0] && pokemon.map(pokemon=>{
+        return <Character pokemon={pokemon}/>
+      })}
+      <Character/>
     </div>
   );
 }
