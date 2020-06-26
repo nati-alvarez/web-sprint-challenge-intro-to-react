@@ -1,10 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+import styledComponent from "styled-components";
 import './App.css';
 
 import Character from "./components/Character";
 
 const API = "https://pokeapi.co/api/v2/pokemon/";
+
+const Title = styledComponent.h1`
+  text-align: center;
+  color: white;
+  font-size: 3rem;
+  -webkit-text-stroke 2px black;
+  text-stroke: 2px black;
+`;
+
+const Characters = styledComponent.main`
+  display: flex;
+  flex-wrap: wrap;
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -30,10 +44,12 @@ const App = () => {
 
   return (
     <div className="App">
-      {pokemon[0] && pokemon.map(pokemon=>{
-        return <Character pokemon={pokemon}/>
-      })}
-      <Character/>
+      <Title>Pokemon Characters</Title>
+      <Characters>
+        {pokemon[0] && pokemon.map(pokemon=>{
+          return <Character pokemon={pokemon}/>
+        })}
+      </Characters>
     </div>
   );
 }
