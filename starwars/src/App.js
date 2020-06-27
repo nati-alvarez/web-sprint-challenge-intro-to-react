@@ -7,17 +7,18 @@ import Character from "./components/Character";
 
 const API = "https://pokeapi.co/api/v2/pokemon/";
 
-const Title = styledComponent.h1`
+const Logo = styledComponent.img`
+  margin: 0 auto;
+  margin-top: 2vh;
+  margin-bottom: 5vh;
   text-align: center;
-  color: white;
-  font-size: 3rem;
-  -webkit-text-stroke 2px black;
-  text-stroke: 2px black;
-`;
+  display: block;
+`
 
 const Characters = styledComponent.main`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 `
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Title>Pokemon Characters</Title>
+      <Logo src="https://fontmeme.com/permalink/200627/c8aa47397d7dc4f428f594d375a4b09b.png" alt="pokemon-font" border="0"/>
       <Characters>
         {pokemon[0] && pokemon.map(pokemon=>{
           return <Character pokemon={pokemon}/>
