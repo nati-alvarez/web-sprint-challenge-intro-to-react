@@ -52,8 +52,8 @@ const App = () => {
     <div className="App">
       <Logo src="https://fontmeme.com/permalink/200627/c8aa47397d7dc4f428f594d375a4b09b.png" alt="pokemon-font" border="0"/>
       <Characters>
-        {pokemon[0] && pokemon.map(pokemon=>{
-          return <Character pokemon={pokemon}/>
+        {pokemon[0] && pokemon.map((pokemon, i)=>{
+          return <Character key={i} pokemon={pokemon}/>
         })}
       </Characters>
     </div>
