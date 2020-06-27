@@ -3,9 +3,13 @@ import axios from "axios";
 import styledComponent from "styled-components";
 import './App.css';
 
+//STRETCH: helper function
+import filterData from "./filterData";
+
 import Character from "./components/Character";
 
 const API = "https://pokeapi.co/api/v2/pokemon/";
+
 
 const Logo = styledComponent.img`
   margin: 0 auto;
@@ -33,6 +37,7 @@ const App = () => {
     axios.get(API).then(({data})=>{
       data.results.forEach(item=>{
         axios.get(item.url).then(({data})=>{
+          data = filterData(data);
           setPokemon(pokemon=> [...pokemon, data])
         }).catch(err=>{
           console.log(err);
