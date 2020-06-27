@@ -34,7 +34,6 @@ const Info = styledComponent.div`
 
 export default function Character({pokemon}){
     if(pokemon){
-        console.log(pokemon)
         return (
             <Pokemon>
                 <Sprite src={pokemon.sprites.front_default}/>
